@@ -1,12 +1,14 @@
 from github import Github
+import os
 
 #Replace 'your_access_token' with your GitHub personal access token
 g = Github("")
 
 #Replace 'repo_owner' and 'repo_name' with the owner and name of the repository
-repo_owner = ''
-repo_name = ''
+repo_owner = 'JMojicaR'
+repo_name = 'gitautotest'
 repo = g.get_repo(f"{repo_owner}/{repo_name}")
+pwd = os.getcwd()
 
 #Iterate through all open pull requests in the repository
 for pull_request in repo.get_pulls(state='open'):
@@ -28,11 +30,12 @@ for pull_request in repo.get_pulls(state='open'):
         #Identify and print added lines
         added_lines = [line[2:] for line in patch_lines if line.startswith('+ ') and not line.startswith('+++')]
         print("Added Lines:")
+        file = open(f'{pwd}/{repo_owner}/{repo_name}/changed_lines.txt', 'w')
         for added_line in added_lines:
-            print(added_line)
+            file.write(added_line + '\n')
 
         print("\n" + "=" * 50 + "\n")  # Separating each file's output
-
+        #Identify and print deleted lines
         deleted_lines = [line[2:] for line in patch_lines if line.startswith('- ') and not line.startswith('---')]
         print("Deleted Lines:")
         for deleted_line in deleted_lines:
