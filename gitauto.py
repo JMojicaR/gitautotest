@@ -2,7 +2,7 @@ from github import Github
 import os
 
 #Replace 'your_access_token' with your GitHub personal access token
-g = Github("")
+g = Github("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")
 
 #Replace 'repo_owner' and 'repo_name' with the owner and name of the repository
 repo_owner = 'JMojicaR'
