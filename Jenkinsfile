@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "echo ${Token}"
+                sh "python3 -u '/home/javier/Escritorio/ghubpoc/gitautotest/gitauto.py ${Token}'"
             }
         }
     }
