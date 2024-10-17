@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 token="${Token}"
-                python3 -u '/home/javier/Escritorio/bashCourse/test.py ${token}'
+                python3 -u '/home/javier/Escritorio/ghubpoc/gitautotest/gitauto.py ${token}'
+                
             }
         }
     }
