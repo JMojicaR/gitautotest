@@ -1,8 +1,10 @@
 from github import Github
 import os
+import sys
 
+token = sys.argv[1]
 #Replace 'your_access_token' with your GitHub personal access token
-g = Github("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")
+g = Github(token)
 
 #Replace 'repo_owner' and 'repo_name' with the owner and name of the repository
 repo_owner = 'JMojicaR'

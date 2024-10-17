@@ -1,9 +1,11 @@
+def token
 pipeline {
     agent any
     stages {
         stage('Build') {
             steps {
-                echo 'Hello world!'
+                token="${Token}"
+                sh "python3 -u '/home/javier/Escritorio/bashCourse/test.py ${token}'"
             }
         }
     }
