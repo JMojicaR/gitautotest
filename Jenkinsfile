@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "python3 /home/javier/Escritorio/ghubpoc/gitautotest/pytestin.py Hello'"
+                sh "python3 -u '/home/javier/Escritorio/ghubpoc/gitautotest/pytestin.py Hello'"
             }
         }
     }
