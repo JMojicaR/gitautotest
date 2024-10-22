@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'python3 gitauto.py ${env.Token}'
+                sh 'python3 gitauto.py ${Token}'
             }
         }
     }
