@@ -1,3 +1,4 @@
 import sys
 
-print(f"From jenkins {sys.argv[1]}")
+print('Hello from python jenkins')
+#print(f"From jenkins {sys.argv[1]}")
