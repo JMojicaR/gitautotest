@@ -23,25 +23,25 @@ for pull_request in repo.get_pulls(state='open'):
     for file in files:
         print(f"File: {file.filename}")
 
-        #Fetch the content of the patch for the file
-        patch_content = file.patch
+        if(".html" in file.filename):
 
-        #Split the patch content into lines
-        patch_lines = patch_content.split('\n')
+            #Fetch the content of the patch for the file
+            patch_content = file.patch
+        
+            #Split the patch content into lines
+            patch_lines = patch_content.split('\n')
+        
+            #Identify and print added lines
+            added_lines = [line[2:] for line in patch_lines if line.startswith('+ ') and not line.startswith('+++')]
+            with open(f'/home/javier/Escritorio/ghubpoc/gitautotest/added_lines.txt', 'w') as file:
+                for added_line in added_lines:
+                    file.write(added_line.strip() + '\n')
 
-        #Identify and print added lines
-        added_lines = [line[2:] for line in patch_lines if line.startswith('+ ') and not line.startswith('+++')]
-        print("Added Lines:")
-        file = open(f'{pwd}/{repo_owner}/{repo_name}/changed_lines.txt', 'w')
-        for added_line in added_lines:
-            file.write(added_line + '\n')
-
-        print("\n" + "=" * 50 + "\n")  # Separating each file's output
-        #Identify and print deleted lines
-        deleted_lines = [line[2:] for line in patch_lines if line.startswith('- ') and not line.startswith('---')]
-        print("Deleted Lines:")
-        for deleted_line in deleted_lines:
-            print(deleted_line)
+            #Identify and print deleted lines
+            deleted_lines = [line[2:] for line in patch_lines if line.startswith('- ') and not line.startswith('---')]
+            with open(f'/home/javier/Escritorio/ghubpoc/gitautotest/deleted_lines.txt', 'w') as file:
+                for deleted_line in deleted_lines:
+                    file.write(deleted_line.strip() + '\n')
 
         print("\n" + "=" * 50 + "\n")  # Separating each file's output
 
