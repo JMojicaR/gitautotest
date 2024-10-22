@@ -1,9 +1,11 @@
+def token
 pipeline {
     agent any
     stages {
         stage('Build') {
             steps {
-                sh 'python3 gitauto.py'
+                token=${Token}
+                sh 'python3 gitauto.py ${token}'
             }
         }
     }
