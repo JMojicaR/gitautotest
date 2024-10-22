@@ -33,13 +33,13 @@ for pull_request in repo.get_pulls(state='open'):
         
             #Identify and print added lines
             added_lines = [line[2:] for line in patch_lines if line.startswith('+ ') and not line.startswith('+++')]
-            with open(f'/home/javier/Escritorio/ghubpoc/gitautotest/added_lines.txt', 'w') as file:
+            with open(f'{pwd}/added_lines.txt', 'w') as file:
                 for added_line in added_lines:
                     file.write(added_line.strip() + '\n')
 
             #Identify and print deleted lines
             deleted_lines = [line[2:] for line in patch_lines if line.startswith('- ') and not line.startswith('---')]
-            with open(f'/home/javier/Escritorio/ghubpoc/gitautotest/deleted_lines.txt', 'w') as file:
+            with open(f'{pwd}/deleted_lines.txt', 'w') as file:
                 for deleted_line in deleted_lines:
                     file.write(deleted_line.strip() + '\n')
 
